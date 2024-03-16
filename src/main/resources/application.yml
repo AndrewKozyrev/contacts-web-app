@@ -1,7 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/your_database_name
+    url: jdbc:postgresql://localhost:5432/test_db
     username: postgres
     password: postgres
+    driver-class-name: org.postgresql.Driver
     hikari:
       schema: contacts_schema
