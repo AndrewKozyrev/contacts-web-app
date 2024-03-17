@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +19,23 @@ public class ContactService {
 
     public List<Contact> findAllContacts() {
         return contactRepository.findAllContacts();
+    }
+
+    public Contact findById(Long id) {
+        return contactRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Contact with id=%s not found.".formatted(id)));
+    }
+
+    public boolean updateContact(Contact contact) {
+        int rowsAffected = contactRepository.updateContact(contact);
+
+        return rowsAffected > 0;
+    }
+
+    public boolean deleteContact(Long id) {
+        int rowsAffected = contactRepository.deleteContact(id);
+
+        return rowsAffected > 0;
     }
 
 //    @EventListener(ApplicationStartedEvent.class)

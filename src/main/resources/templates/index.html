@@ -16,6 +16,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone</th>
+        <th class="actions-column">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +26,14 @@
         <td th:text="${contact.lastName}"></td>
         <td th:text="${contact.email}"></td>
         <td th:text="${contact.phone}"></td>
+        <td class="actions">
+            <form th:action="@{/edit-contact/{id}(id=${contact.id})}" th:method="get">
+                <button type="submit">Edit</button>
+            </form>
+            <form th:action="@{/delete-contact/{id}(id=${contact.id})}" th:method="get">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>

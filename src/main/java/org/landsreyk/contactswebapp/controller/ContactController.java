@@ -5,7 +5,7 @@ import org.landsreyk.contactswebapp.dto.Contact;
 import org.landsreyk.contactswebapp.service.ContactService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +20,24 @@ public class ContactController {
         List<Contact> contacts = contactService.findAllContacts();
         model.addAttribute("contacts", contacts);
         return "index";
+    }
+
+    @GetMapping("/delete-contact/{id}")
+    public String deleteContact(@PathVariable Long id) {
+        contactService.deleteContact(id);
+        return "redirect:/contacts";
+    }
+
+    @GetMapping("/edit-contact/{id}")
+    public String editContact(@PathVariable Long id, Model model) {
+        Contact contact = contactService.findById(id);
+        model.addAttribute("contact", contact);
+        return "contact";
+    }
+
+    @PostMapping("/update-contact")
+    public String updateContact(@ModelAttribute Contact contact) {
+        contactService.updateContact(contact);
+        return "redirect:/contacts";
     }
 }

@@ -12,7 +12,6 @@ h1 {
 
 table {
     border-collapse: collapse;
-    width: 100%;
     margin: 0 auto;
     border: 1px solid #ddd;
 }
@@ -30,4 +29,18 @@ th {
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+.actions-column {
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+
+  margin: 0 auto;
+}
+
+.actions button {
+  margin: 0 5px;
 }
