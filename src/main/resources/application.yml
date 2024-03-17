@@ -6,3 +6,6 @@ spring:
     driver-class-name: org.postgresql.Driver
     hikari:
       schema: contacts_schema
+app:
+  init-contacts-enabled: false
+  init-contacts-count: 10

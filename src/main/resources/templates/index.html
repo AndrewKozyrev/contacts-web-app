@@ -7,38 +7,44 @@
     <link rel="stylesheet" th:href="@{/css/index_styles.css}">
 </head>
 <body>
-<h1>Contact List</h1>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th class="actions-column">Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="contact : ${contacts}">
-        <td th:text="${contact.id}"></td>
-        <td th:text="${contact.firstName}"></td>
-        <td th:text="${contact.lastName}"></td>
-        <td th:text="${contact.email}"></td>
-        <td th:text="${contact.phone}"></td>
-        <td class="actions">
-            <form th:action="@{/edit-contact/{id}(id=${contact.id})}" th:method="get">
-                <button type="submit">Edit</button>
-            </form>
-            <form th:action="@{/delete-contact/{id}(id=${contact.id})}" th:method="get">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<form action="/create-contact" method="get">
-    <button type="submit" class="add-contact-button">Add Contact</button>
-</form>
+<header class="page-header">
+    <h1 class="heading">Contact List</h1>
+</header>
+<section class="contact-list-container">
+    <table>
+        <thead>
+        <tr class="table-header">
+            <th class="table-header-cell">ID</th>
+            <th class="table-header-cell">First Name</th>
+            <th class="table-header-cell">Last Name</th>
+            <th class="table-header-cell">Email</th>
+            <th class="table-header-cell">Phone</th>
+            <th class="table-header-cell actions-column">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table-row" th:each="contact : ${contacts}">
+            <td class="table-cell" th:text="${contact.id}"></td>
+            <td class="table-cell" th:text="${contact.firstName}"></td>
+            <td class="table-cell" th:text="${contact.lastName}"></td>
+            <td class="table-cell" th:text="${contact.email}"></td>
+            <td class="table-cell" th:text="${contact.phone}"></td>
+            <td class="table-cell actions-column">
+                <form class="action-form" th:action="@{/edit-contact/{id}(id=${contact.id})}" th:method="get">
+                    <button type="submit" class="action-button">Edit</button>
+                </form>
+                <form class="action-form" th:action="@{/delete-contact/{id}(id=${contact.id})}" th:method="get">
+                    <button type="submit" class="action-button">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<section class="add-contact-container">
+    <form class="add-contact-form" action="/create-contact" method="get">
+        <button type="submit" class="add-contact-button">Add Contact</button>
+    </form>
+</section>
 </body>
 </html>
