@@ -1,7 +1,7 @@
 package org.landsreyk.contactswebapp.dto;
 
 import lombok.Data;
-import org.landsreyk.contactswebapp.util.ValidPhoneNumber;
+import org.landsreyk.contactswebapp.util.PhoneUtils;
 
 import javax.validation.constraints.Email;
 
@@ -18,6 +18,12 @@ public class Contact {
     @Email(message = "Please enter a valid email address")
     private String email;
 
-    @ValidPhoneNumber
     private String phone;
+
+    public void setPhone(String phone) {
+        if (!PhoneUtils.isValidPhoneNumber(phone)) {
+            throw new IllegalArgumentException("%s is not a valid phone number!".formatted(phone));
+        }
+        this.phone = phone;
+    }
 }

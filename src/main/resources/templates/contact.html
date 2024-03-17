@@ -8,8 +8,8 @@
 </head>
 <body>
 <div class="container">
-    <h1>Contact</h1>
-    <form th:action="@{/update-contact}" th:method="post" class="contact-form">
+    <h1 th:text="${contact.id != null ? 'Edit Contact' : 'Add Contact'}"></h1>
+    <form th:action="${contact.id != null ? '/update-contact' : '/create-contact'}" th:method="post" class="contact-form">
         <input type="hidden" name="id" th:value="${contact.id}">
         <div class="form-group">
             <label for="firstName" class="form-label">First Name</label>

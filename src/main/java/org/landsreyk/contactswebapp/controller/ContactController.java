@@ -5,7 +5,10 @@ import org.landsreyk.contactswebapp.dto.Contact;
 import org.landsreyk.contactswebapp.service.ContactService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -38,6 +41,19 @@ public class ContactController {
     @PostMapping("/update-contact")
     public String updateContact(@ModelAttribute Contact contact) {
         contactService.updateContact(contact);
+        return "redirect:/contacts";
+    }
+
+    @GetMapping("/create-contact")
+    public String createContact(Model model) {
+        Contact contact = new Contact();
+        model.addAttribute("contact", contact);
+        return "contact";
+    }
+
+    @PostMapping("/create-contact")
+    public String saveContact(@ModelAttribute Contact contact) {
+        contactService.saveContact(contact);
         return "redirect:/contacts";
     }
 }
