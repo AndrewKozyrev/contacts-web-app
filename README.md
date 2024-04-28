@@ -18,14 +18,23 @@
 
 ## Установка
 
+### 1. Установка через скрипт
 Для установки нужно склонировать проект, включить docker и запустить скрипт [local-run.bat](local-run.bat).
 
 ```bash
-  git clone https://github.com/AndrewKozyrev/contacts-web-app.git
-  cd contacts-web-app/
-  ./local-run.bat
+    git clone https://github.com/AndrewKozyrev/contacts-web-app.git
+    cd contacts-web-app/
+    ./local-run.bat
 ```
-Данный скрипт данный скрипт запускает БД на порту `5432` с именем пользователя `postgres`, паролем `postgres`, именем базы данных `test_db`.
+Данный скрипт запускает БД на порту `5432` с именем пользователя `postgres`, паролем `postgres`, именем базы данных `test_db`.
+
+### 2. Установка через `docker-compose`
+
+```bash
+    mvn clean package
+    docker-compose up
+```
+
 ## Документация
 
 В файле application.yml есть два свойства:
